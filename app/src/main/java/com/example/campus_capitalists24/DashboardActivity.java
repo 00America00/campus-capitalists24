@@ -28,8 +28,7 @@ public class DashboardActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         binding = DashboardBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
-        assets = getAssets();
-        setupProfile();
+
         replaceFragment(new HomeFragment());
         binding.bottomNavigationView.setBackground(null);
 
@@ -82,8 +81,8 @@ public class DashboardActivity extends AppCompatActivity {
             System.out.println("Error " + e.getMessage());
         }
 
-        TextView name = (TextView) findViewById(R.id.textView3);
-        TextView email = (TextView) findViewById(R.id.textView4);
+        TextView name = (TextView) findViewById(R.id.welcome);
+        TextView email = (TextView) findViewById(R.id.home1);
         name.setText(profileInfo.getName());
         email.setText(profileInfo.getEmail());
 
