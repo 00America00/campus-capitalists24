@@ -1,29 +1,110 @@
 <?xml  version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/frameLayout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/purple_500"
+    android:background="@color/material_dynamic_primary60"
+    android:textAlignment="center"
     tools:context=".HomeFragment">
 
     <!-- TODO: Update blank fragment layout -->
 
     <TextView
         android:id="@+id/home1"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_width="175dp"
+        android:layout_height="85dp"
         android:gravity="center"
         android:text="Home"
         android:textColor="@color/black"
-        android:textSize="30sp" />
+        android:textSize="30sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
         android:id="@+id/welcome"
-        android:layout_width="match_parent"
+        android:layout_width="200dp"
         android:layout_height="50dp"
-        android:layout_marginTop="80dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="48dp"
         android:text="Hello"
-        android:textSize="40sp" />
+        android:textColor="@color/black"
+        android:textSize="40sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/hello"
+        android:layout_width="132dp"
+        android:layout_height="50dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
+        android:text="@string/Hello"
+        android:textColor="@color/black"
+        android:textSize="40sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/home_header"
+        android:layout_width="209dp"
+        android:layout_height="50dp"
+        android:layout_marginStart="92dp"
+        android:layout_marginTop="16dp"
+        android:text="@string/Curr_Balance"
+        android:textColor="@color/black"
+        android:textSize="26sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/welcome" />
+
+    <TextView
+        android:id="@+id/checking"
+        android:layout_width="100dp"
+        android:layout_height="40dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="4dp"
+        android:text="@string/Checking"
+        android:textColor="@color/black"
+        android:textSize="20sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/home_header" />
+
+    <EditText
+        android:id="@+id/checkings_amt"
+        android:layout_width="210dp"
+        android:layout_height="40dp"
+        android:layout_marginStart="32dp"
+        android:backgroundTint="@android:color/transparent"
+        android:ems="10"
+        android:inputType="number"
+        android:text="10,000"
+        android:textAlignment="viewStart"
+        app:layout_constraintStart_toEndOf="@+id/checking"
+        app:layout_constraintTop_toBottomOf="@+id/home_header" />
+
+    <TextView
+        android:id="@+id/savings"
+        android:layout_width="100dp"
+        android:layout_height="40dp"
+        android:text="@string/Savings"
+        android:textColor="@color/black"
+        android:textSize="20sp"
+        app:layout_constraintStart_toStartOf="@+id/checking"
+        app:layout_constraintTop_toBottomOf="@+id/checking" />
+
+    <EditText
+        android:id="@+id/savings_amt"
+        android:layout_width="210dp"
+        android:layout_height="40dp"
+        android:backgroundTint="@android:color/transparent"
+        android:ems="10"
+        android:inputType="number"
+        android:text="1,000"
+        app:layout_constraintStart_toStartOf="@+id/checkings_amt"
+        app:layout_constraintTop_toBottomOf="@+id/checkings_amt" />
 
 
-</FrameLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>

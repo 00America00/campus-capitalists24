@@ -14,23 +14,27 @@ import android.widget.TextView;
 
 import com.example.campus_capitalists24.databinding.DashboardBinding;
 
+import java.io.File;
 import java.io.IOException;
 import java.util.Scanner;
 
 public class MainActivity extends ComponentActivity {
-    private Button button;
-    private AssetManager assets;
+    //private Button button;
+   // private AssetManager assets;
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.login);
-        assets = getAssets();
+        //assets = getAssets();
         //Toast.makeText(this,"Hello World", Toast.LENGTH_SHORT).show();
         setupButtons();
     }
 
     private void setupButtons() {
-        button = findViewById(R.id.button);
+        Button button = findViewById(R.id.button);
+        Button button2 = findViewById(R.id.button2);
+
+
         button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -49,26 +53,37 @@ public class MainActivity extends ComponentActivity {
                 }
             }
         });
+        button2.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(MainActivity.this, RegisterActivity.class);
+                startActivity(intent);
+            }
+        });
+
     }
     private int authenticate(String username, String password) {
         Scanner scan;
         String str = "";
         String[] arr = null;
-        boolean authenticated = false;
+        //boolean authenticated = false;
         int id = -1;
+        File f = new File(getFilesDir().getAbsolutePath() + "/login.txt");
 
         try {
-            scan = new Scanner(assets.open("login.txt"));
-            while(scan.hasNext()){
-                str = scan.nextLine();
-                arr = str.split(",");
-                if(username.equalsIgnoreCase(arr[1]) && password.equals(arr[2])){
-                    authenticated = true;
-                    id = Integer.parseInt(arr[0]);
-                    break;
+            if(f.exists()) {
+                scan = new Scanner(openFileInput("login.txt"));
+                while (scan.hasNext()) {
+                    str = scan.nextLine();
+                    arr = str.split(",");
+                    if (username.equalsIgnoreCase(arr[1]) && password.equals(arr[2])) {
+                        //authenticated = true;
+                        id = Integer.parseInt(arr[0]);
+                        break;
+                    }
                 }
+                scan.close();
             }
-            scan.close();
         }
         catch (IOException e){
             System.out.println("Error " + e.getMessage());
