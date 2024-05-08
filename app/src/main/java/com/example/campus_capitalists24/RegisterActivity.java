@@ -68,7 +68,7 @@ public class RegisterActivity extends ComponentActivity {
     }
 
     private int createLogin()  {
-        EditText unameInput = (EditText) findViewById(R.id.new_nameInput);
+        EditText unameInput = (EditText) findViewById(R.id.new_UserInput);
         EditText passInput = (EditText) findViewById(R.id.new_passwordInput);
         String username = unameInput.getText().toString();
         String password = passInput.getText().toString();
