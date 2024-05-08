@@ -13,6 +13,11 @@
         android:title="Balance"
         android:icon="@drawable/baseline_balance_24"/>
     <item
+        android:id="@+id/expense"
+        android:title="Expense"
+        android:icon="@drawable/expenses_24"/>
+    />
+    <item
         android:id="@+id/money"
         android:title="Money"
         android:icon="@drawable/sharp_attach_money_24"/>

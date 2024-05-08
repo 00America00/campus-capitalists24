@@ -37,6 +37,9 @@ public class DashboardActivity extends AppCompatActivity {
                 case R.id.home:
                     replaceFragment(new HomeFragment());
                     break;
+                case R.id.expense:
+                    replaceFragment(new ExpenseListFragment());
+                    break;
                 case R.id.balance:
                     replaceFragment(new BalanceFragment());
                     break;
