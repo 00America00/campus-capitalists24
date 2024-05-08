@@ -3,14 +3,10 @@
     <string name="title_activity_main">MainActivity</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
-    <string name="Sign_Up">Sign Up</string>
-    <string name="signup_header">Please Fill Out All Information Below</string>
-    <string name="username">Username</string>
-    <string name="Password">Password</string>
-    <string name="Name">Name</string>
-    <string name="Email">Email</string>
-    <string name="Hello">Hello</string>
-    <string name="Curr_Balance">Current Balance</string>
-    <string name="Checking">Checkings</string>
-    <string name="Savings">Savings</string>
+    <string name="expense_reg_title">New Expense</string>
+    <string name="exp_date">Date:</string>
+    <string name="exp_amount">Amount:</string>
+    <string name="exp_category">Category:</string>
+    <string name="exp_notes">Notes:</string>
+    <string name="Submit">SUBMIT</string>
 </resources>
