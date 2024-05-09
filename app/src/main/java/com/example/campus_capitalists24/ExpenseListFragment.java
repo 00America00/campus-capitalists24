@@ -10,12 +10,15 @@ import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ListView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentTransaction;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import java.io.BufferedReader;
 import java.io.File;
@@ -32,6 +35,7 @@ public class ExpenseListFragment extends Fragment {
         private ListView listView;
         private List<String> expenses;
 
+
         @Override
         public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
                 View view = inflater.inflate(R.layout.fragment_expenselist, container, false);
@@ -40,12 +44,46 @@ public class ExpenseListFragment extends Fragment {
                 expenses = readFromFile(); // Read expense data from CSV file
 
                 // Create an adapter to populate the ListView
-                ArrayAdapter<String> adapter = new ArrayAdapter<>(requireContext(), android.R.layout.simple_list_item_1, expenses);
+                ArrayAdapter<String> adapter = new ArrayAdapter<String>(requireContext(), R.layout.expense_list_item, expenses) {
+                        @NonNull
+                        @Override
+                        public View getView(int position, @Nullable View convertView, @NonNull ViewGroup parent) {
+                                View itemView = convertView;
+                                if (itemView == null) {
+                                        itemView = getLayoutInflater().inflate(R.layout.expense_list_item, parent, false);
+                                }
+
+                                // Get the current expense string
+                                String expenseString = getItem(position);
+
+                                // Parse the expense data from the CSV string
+                                String[] parts = expenseString.split(",");
+                                String id = parts[0];
+                                String tid = parts[1];
+                                String date = parts[2];
+                                double amount = Double.parseDouble(parts[3]);
+                                String category = parts[4];
+                                String note = parts[5];
+
+                                // Find the TextViews in the layout
+                                TextView dateTextView = itemView.findViewById(R.id.dateTextView);
+                                TextView amountTextView = itemView.findViewById(R.id.amountTextView);
+                                TextView categoryTextView = itemView.findViewById(R.id.categoryTextView);
+                                TextView notesTextView = itemView.findViewById(R.id.notesTextView);
+
+                                // Set the text for each TextView with labels
+                                dateTextView.setText("Date: " + date);
+                                amountTextView.setText("Amount: $" + amount);
+                                categoryTextView.setText("Category: " + category);
+                                notesTextView.setText("Notes: " + note);
+
+                                return itemView;
+                        }
+                };
                 listView.setAdapter(adapter);
 
                 return view;
         }
-
         @Override
         public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
                 super.onViewCreated(view, savedInstanceState);
@@ -54,12 +92,19 @@ public class ExpenseListFragment extends Fragment {
                 addButton.setOnClickListener(new View.OnClickListener() {
                         @Override
                         public void onClick(View v) {
-                                FragmentTransaction transaction = requireActivity().getSupportFragmentManager().beginTransaction();
-                                transaction.replace(R.id.constraintLayout2, new newExpenseFragment());
-                                transaction.commit();
+                                // Hide the button
+                                addButton.setVisibility(View.GONE);
+
+                                // Create newExpenseFragment and add it as a child fragment
+                                newExpenseFragment fragment = new newExpenseFragment();
+                                getChildFragmentManager().beginTransaction()
+                                        .add(R.id.fragment_container, fragment)
+                                        .addToBackStack("expenseList")
+                                        .commit();
                         }
                 });
         }
+
         private List<String> readFromFile() {
                 List<String> lines = new ArrayList<>();
                 OutputStreamWriter w = null; //edit made
@@ -85,29 +130,10 @@ public class ExpenseListFragment extends Fragment {
                                         lines.add(line);
                                 }
                                 br.close();
-                /*}catch (FileNotFoundException e) {
-                        // File does not exist, create it
-                        try {
-                                //FileOutputStream fos = requireContext().openFileOutput("expenses.csv", Context.MODE_PRIVATE);
-                                w = new OutputStreamWriter(requireContext().openFileOutput("expenses.txt", MODE_PRIVATE));
-                                //fos.close();
-                                w.close();
-                        } catch (IOException ex) {
-                                Toast.makeText(requireContext(), "Error creating expenses file", Toast.LENGTH_SHORT).show();
-                        }*/
                         } catch (IOException e) {
                                 Toast.makeText(requireContext(), "IOException: " + e.getMessage(), Toast.LENGTH_SHORT).show();
                         }
                 }
-
-                if (lines.isEmpty()) {
-                        // No expenses found
-                        lines.add("No expenses added");
-                }/*
-                catch (IOException e) {
-                        Toast.makeText(requireContext(), "IOException" + e.getMessage(), Toast.LENGTH_SHORT).show();
-                }*/
-
                 return lines;
         }
 
