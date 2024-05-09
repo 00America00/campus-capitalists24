@@ -61,7 +61,18 @@ public class newExpenseFragment extends Fragment {
                         writeToFile(expenseData);
 
                         FragmentManager fragmentManager = requireActivity().getSupportFragmentManager();
-                        fragmentManager.popBackStack("expenseList", FragmentManager.POP_BACK_STACK_INCLUSIVE); // Pops the back stack to go back to the previous fragment
+                        Fragment expenseListFragment = fragmentManager.findFragmentByTag("expenseList");
+                        if (expenseListFragment != null && expenseListFragment.isVisible()) {
+                            fragmentManager.popBackStack("expenseList", FragmentManager.POP_BACK_STACK_INCLUSIVE);
+                        } else {
+                            fragmentManager.beginTransaction()
+                                    .replace(R.id.fragment_container, new ExpenseListFragment())
+                                    .addToBackStack("expenseList")
+                                    .commit();
+                        }
+
+                        //FragmentManager fragmentManager = requireActivity().getSupportFragmentManager();
+                        //fragmentManager.popBackStack("expenseList", FragmentManager.POP_BACK_STACK_INCLUSIVE); // Pops the back stack to go back to the previous fragment
                     } catch (IOException e) {
                         Toast.makeText(requireContext(), "IOException" + e.getMessage(), Toast.LENGTH_SHORT).show();
                     }
