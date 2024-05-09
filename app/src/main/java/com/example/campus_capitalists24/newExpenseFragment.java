@@ -11,6 +11,7 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
 
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
@@ -21,7 +22,7 @@ import java.io.IOException;
 
 public class newExpenseFragment extends Fragment {
     private static final String FILENAME = "/expenses.txt"; // File name
-    private static final String DELIMITER = ","; // Delimiter for CSV format
+    private static final String DELIMITER = ","; // Delimiter
 
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.register_expense, container, false);
@@ -41,7 +42,7 @@ public class newExpenseFragment extends Fragment {
 
                 if (validateExpenseInfo(view)) {
                     try {
-                        // Retrieve or generate account ID (not shown)
+                        // Retrieve or generate account ID
                         int accountId = 123; // Example account ID
 
                         // Retrieve last transaction ID from the file
@@ -59,7 +60,8 @@ public class newExpenseFragment extends Fragment {
                         // Write data to file
                         writeToFile(expenseData);
 
-                        requireActivity().finish(); // Finish the activity after adding the expense
+                        FragmentManager fragmentManager = requireActivity().getSupportFragmentManager();
+                        fragmentManager.popBackStack("expenseList", FragmentManager.POP_BACK_STACK_INCLUSIVE); // Pops the back stack to go back to the previous fragment
                     } catch (IOException e) {
                         Toast.makeText(requireContext(), "IOException" + e.getMessage(), Toast.LENGTH_SHORT).show();
                     }
@@ -81,8 +83,8 @@ public class newExpenseFragment extends Fragment {
         EditText categoryInput = (EditText) view.findViewById(R.id.exp_category_input);
         EditText noteInput = (EditText) view.findViewById(R.id.exp_notes_input);
 
-        boolean isDateValid = dateInput.getText().toString().matches("\\d{2}-\\d{2}-\\d{4}");
-        boolean isAmountValid = amountInput.getText().toString().matches("\\d{2}.\\d{2}");
+        boolean isDateValid = dateInput.getText().toString().matches("(\\d{1,2}-\\d{1,2}-\\d{2,4})|(\\d{1,2}/\\d{1,2}/\\d{2,4})");
+        boolean isAmountValid = amountInput.getText().toString().matches("\\d+[.,]\\d+");
         boolean isCategoryValid = !categoryInput.getText().toString().isEmpty();
         boolean isNoteValid = noteInput.getText().toString().isEmpty() || !noteInput.getText().toString().isEmpty();
 
@@ -115,7 +117,7 @@ public class newExpenseFragment extends Fragment {
 
         while ((line = br.readLine()) != null) {
             String[] parts = line.split(DELIMITER);
-            int tid = Integer.parseInt(parts[1]); // Transaction ID is at index 1
+            int tid = Integer.parseInt(parts[1]); // Expense ID is at index 1
             if (tid > maxId) {
                 maxId = tid;
             }
