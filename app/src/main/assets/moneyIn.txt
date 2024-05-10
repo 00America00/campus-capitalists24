@@ -1,2 +1,10 @@
-04/20,24.56,food
-04/22,20.00,bill
+May 10th,657.56,payroll
+April 26th,293.00,payroll
+April 12th,456.45,payroll
+March 29th,890.23,payroll
+March 15th,874.20,payroll
+March 1st,454.87,payroll
+February 16th,1,123.43,payroll
+February 2nd,238.43,payroll
+January 19th,984.65,payroll
+January 6th,378.56,payroll
