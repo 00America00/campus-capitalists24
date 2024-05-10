@@ -1,10 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#B8F1AC"
     android:orientation="vertical"
-    android:background="#FFFFFF"
     tools:context=".ExpenseListFragment">
 
     <!-- Toolbar or action bar -->
@@ -12,7 +13,7 @@
         android:id="@+id/toolbar"
         android:layout_width="match_parent"
         android:layout_height="?attr/actionBarSize"
-        android:background="?attr/colorPrimary"
+        android:background="#47BD32"
         android:elevation="4dp"
         android:theme="@style/ThemeOverlay.AppCompat.ActionBar" />
 
@@ -23,7 +24,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_below="@id/toolbar"
-        android:layout_marginBottom="50dp"/>
+        android:layout_marginBottom="50dp" />
 
     <!-- Fragment container -->
     <FrameLayout
@@ -39,6 +40,10 @@
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
         android:layout_marginBottom="55dp"
-        android:text="Add Expense" />
+        android:background="#EAF3E9"
+        android:backgroundTint="#47BD32"
+        android:foregroundTint="#47BD32"
+        android:text="Add Expense"
+        app:iconTint="#E8F1E6" />
 
 </RelativeLayout>

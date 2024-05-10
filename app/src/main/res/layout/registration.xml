@@ -4,7 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/constraintLayout"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:background="#B8F1AC">
 
 
     <TextView
@@ -127,11 +128,4 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
 
-    <TextView
-        android:id="@+id/textView11"
-        android:layout_width="110dp"
-        android:layout_height="40dp"
-        android:text="TextView"
-        app:layout_constraintStart_toStartOf="@+id/new_email"
-        app:layout_constraintTop_toBottomOf="@+id/new_email" />
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -18,11 +18,7 @@ import java.io.InputStreamReader;
 import java.nio.file.Files;
 import java.util.Scanner;
 
-/**
- * A simple {@link Fragment} subclass.
- * Use the {@link HomeFragment#newInstance} factory method to
- * create an instance of this fragment.
- */
+
 public class HomeFragment extends Fragment {
 
     //private AssetManager assets;
@@ -36,7 +32,7 @@ public class HomeFragment extends Fragment {
         View view = inflater.inflate(R.layout.fragment_home, container, false);
 
         nameTextView = view.findViewById(R.id.welcome);
-        emailTextView = view.findViewById(R.id.home1);
+        emailTextView = view.findViewById(R.id.home1); //changed from home1
 
         if (getArguments() != null) {
             int id = getArguments().getInt("id", -1);
