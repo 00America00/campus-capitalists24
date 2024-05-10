@@ -1,19 +1,168 @@
 <?xml  version="1.0" encoding="utf-8"?>
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/purple_500"
+    android:background="#C1C1C1"
     tools:context=".BalanceFragment">
 
+
     <!-- TODO: Update blank fragment layout -->
-    <TextView
-        android:id="@+id/balance"
+
+
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:gravity="center"
-        android:text="Balance"
-        android:textColor="@color/black"
-        android:textSize="30sp" />
+        android:layout_height="721dp">
+
+
+        <ImageView
+            android:id="@+id/imageView2"
+            android:layout_width="362dp"
+            android:layout_height="254dp"
+            android:layout_marginStart="22dp"
+            android:layout_marginTop="73dp"
+            android:layout_marginEnd="27dp"
+            android:layout_marginBottom="394dp"
+            android:contentDescription="@string/white_square"
+            android:src="@android:drawable/screen_background_light"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+
+        <ImageView
+            android:id="@+id/imageView4"
+            android:layout_width="368dp"
+            android:layout_height="163dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="165dp"
+            android:layout_marginEnd="27dp"
+            android:layout_marginBottom="393dp"
+            android:backgroundTint="#FBFBFB"
+            android:contentDescription="TODO"
+            android:src="@android:drawable/dialog_holo_light_frame"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+
+        <TextView
+            android:id="@+id/textView8"
+            android:layout_width="170dp"
+            android:layout_height="26dp"
+            android:layout_marginStart="58dp"
+            android:layout_marginTop="206dp"
+            android:layout_marginEnd="183dp"
+            android:layout_marginBottom="489dp"
+            android:text="@string/available_balance_text"
+            android:textColor="#726D6D"
+            android:textSize="16sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+
+        <TextView
+            android:id="@+id/balance"
+            android:layout_width="188dp"
+            android:layout_height="66dp"
+            android:layout_marginStart="107dp"
+            android:layout_marginTop="73dp"
+            android:layout_marginEnd="116dp"
+            android:layout_marginBottom="582dp"
+            android:fontFamily="sans-serif-medium"
+            android:gravity="center"
+            android:text="@string/balance_header"
+            android:textColor="@color/black"
+            android:textSize="48sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:ignore="TextSizeCheck" />
+
+
+        <TextView
+            android:id="@+id/textView5"
+            android:layout_width="256dp"
+            android:layout_height="38dp"
+            android:layout_marginStart="77dp"
+            android:layout_marginTop="144dp"
+            android:layout_marginEnd="78dp"
+            android:layout_marginBottom="539dp"
+            android:fontFamily="sans-serif-medium"
+            android:text="@string/total_checking"
+            android:textColor="#000000"
+            android:textSize="20sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+
+        <ImageView
+            android:id="@+id/imageView3"
+            android:layout_width="362dp"
+            android:layout_height="374dp"
+            android:layout_marginStart="26dp"
+            android:layout_marginTop="347dp"
+            android:layout_marginEnd="32dp"
+            android:src="@android:drawable/screen_background_light"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <ListView
+            android:id="@+id/fragment_transaction_list"
+            android:layout_width="329dp"
+            android:layout_height="295dp"
+            android:layout_marginStart="38dp"
+            android:layout_marginTop="409dp"
+            android:layout_marginEnd="44dp"
+            android:layout_marginBottom="17dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/textView10"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="45dp"
+            android:layout_marginTop="374dp"
+            android:layout_marginEnd="213dp"
+            android:layout_marginBottom="320dp"
+            android:text="@string/transation_name"
+            android:textColor="#0B0A0A"
+            android:textSize="20sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/textView12"
+            android:layout_width="162dp"
+            android:layout_height="37dp"
+            android:layout_marginStart="157dp"
+            android:layout_marginTop="244dp"
+            android:layout_marginEnd="92dp"
+            android:layout_marginBottom="440dp"
+            android:text="@string/Curr_Balance"
+            android:textSize="20sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
 
 </FrameLayout>

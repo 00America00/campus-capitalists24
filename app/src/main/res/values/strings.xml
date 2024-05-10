@@ -19,5 +19,11 @@
     <string name="exp_category">Category:</string>
     <string name="exp_notes">Notes:</string>
     <string name="Submit">SUBMIT</string>
+    <string name="back_button"><![CDATA[< back]]></string>
+    <string name="total_checking">TOTAL CHECKING (...XXXX)</string>
+    <string name="balance_header">Balance</string>
+    <string name="available_balance_text">AVAILABLE BALANCE</string>
+    <string name="white_square">TODO</string>
+    <string name="transation_name">"TRANSACTIONS "</string>
 
 </resources>
