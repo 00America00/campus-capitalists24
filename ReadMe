@@ -1,0 +1,6 @@
+                                Budgeting App for Andriod
+This repository was created in Spring 2024 as a final group project for Applications Programming. 
+This is a budget management application developed for Android devices using Java and Kotlin. 
+The app follows the Model-View-Controller (MVC) design pattern. It allows users to track their 
+income, expenses, and savings with an intuitive and user-friendly interface. 
+Android Development Tools were Android Studio and Jetpack Components. 
